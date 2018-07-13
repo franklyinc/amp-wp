@@ -20,9 +20,6 @@ require_once "includes/utils/frankly-amp-utils.php";
 # Requires the frankly-amp-utils above for access to wordpress functions.
 require_once "amp.php";
 
-# needed to prevent: A non-numeric value encountered in includes/utils/class-amp-image-dimension-extractor.php on line 85
-define("DAY_IN_SECONDS", 86400);
-
 $html = "<img src='test'><img><a href='sdf'>testr</a><script type='text/javascript'>console.log('df');</script>";
 
 $amp_content = new AMP_Content(

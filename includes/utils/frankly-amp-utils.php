@@ -9,6 +9,9 @@
 // Stubs or copies of internal wordpress functions needed for standalone converter outside wordpress
 //
 
+// needed to prevent: A non-numeric value encountered in includes/utils/class-amp-image-dimension-extractor.php on line 85
+define("DAY_IN_SECONDS", 86400);
+
 // STUBS
 function get_bloginfo( $show = '', $filter = 'raw' ) {
   return "bloginfo";

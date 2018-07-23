@@ -66,6 +66,83 @@ function wp_guess_url() {
 
 // REAL functions / classes
 
+function absint( $maybeint ) {
+    return abs( intval( $maybeint ) );
+}
+
+function wp_json_encode( $data, $options = 0, $depth = 512 ) {
+    /*
+     * json_encode() has had extra params added over the years.
+     * $options was added in 5.3, and $depth in 5.5.
+     * We need to make sure we call it with the correct arguments.
+     */
+    if ( version_compare( PHP_VERSION, '5.5', '>=' ) ) {
+        $args = array( $data, $options, $depth );
+    } elseif ( version_compare( PHP_VERSION, '5.3', '>=' ) ) {
+        $args = array( $data, $options );
+    } else {
+        $args = array( $data );
+    }
+
+    // Prepare the data for JSON serialization.
+    $args[0] = _wp_json_prepare_data( $data );
+
+    $json = @call_user_func_array( 'json_encode', $args );
+
+    // If json_encode() was successful, no need to do more sanity checking.
+    // ... unless we're in an old version of PHP, and json_encode() returned
+    // a string containing 'null'. Then we need to do more sanity checking.
+    if ( false !== $json && ( version_compare( PHP_VERSION, '5.5', '>=' ) || false === strpos( $json, 'null' ) ) )  {
+        return $json;
+    }
+
+    try {
+        $args[0] = _wp_json_sanity_check( $data, $depth );
+    } catch ( Exception $e ) {
+        return false;
+    }
+
+    return call_user_func_array( 'json_encode', $args );
+}
+
+function _wp_json_prepare_data( $data ) {
+	if ( ! defined( 'WP_JSON_SERIALIZE_COMPATIBLE' ) || WP_JSON_SERIALIZE_COMPATIBLE === false ) {
+		return $data;
+	}
+
+	switch ( gettype( $data ) ) {
+		case 'boolean':
+		case 'integer':
+		case 'double':
+		case 'string':
+		case 'NULL':
+			// These values can be passed through.
+			return $data;
+
+		case 'array':
+			// Arrays must be mapped in case they also return objects.
+			return array_map( '_wp_json_prepare_data', $data );
+
+		case 'object':
+			// If this is an incomplete object (__PHP_Incomplete_Class), bail.
+			if ( ! is_object( $data ) ) {
+				return null;
+			}
+
+			if ( $data instanceof JsonSerializable ) {
+				$data = $data->jsonSerialize();
+			} else {
+				$data = get_object_vars( $data );
+			}
+
+			// Now, pass the array (or whatever was returned from jsonSerialize through).
+			return _wp_json_prepare_data( $data );
+
+		default:
+			return null;
+	}
+}
+
 function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1) {
     return add_filter($tag, $function_to_add, $priority, $accepted_args);
 }

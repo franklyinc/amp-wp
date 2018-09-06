@@ -1,0 +1,9 @@
+package-lock.json
+*/assets*
+*/bin*
+*/blocks*
+*/dev-lib*
+*/languages*
+*/tests*
+*/wp-assets*
+*/wpcom*

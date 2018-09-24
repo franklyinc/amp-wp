@@ -108,11 +108,7 @@ class AMP_Autoloader {
 		'WPCOM_AMP_Polldaddy_Embed'                   => 'wpcom/class-amp-polldaddy-embed',
 		'AMP_Test_Stub_Sanitizer'                     => 'tests/stubs',
 		'AMP_Test_World_Sanitizer'                    => 'tests/stubs',
-
-		// Frankly AMP embeds
-		'Frankly_AMP_Slideshow_Embed_Handler'         => 'includes/embeds/frankly-amp-embeds/class-frankly-amp-slideshow-embed',
-		'Frankly_AMP_Facebook_Embed_Handler'         => 'includes/embeds/frankly-amp-embeds/class-frankly-amp-facebook-embed',
-	);
+		);
 
 	/**
 	 * Is registered.
@@ -165,6 +161,7 @@ class AMP_Autoloader {
 	 * @param string $filepath   Absolute filepath to class file, including .php extension.
 	 */
 	public static function register_autoload_class( $class_name, $filepath ) {
-		self::$_classmap[ $class_name ] = '!' . $filepath;
+		//self::$_classmap[ $class_name ] = '!' . $filepath;
+		self::$_classmap[ $class_name ] = $filepath; // Removing '!' from the filepath
 	}
 }

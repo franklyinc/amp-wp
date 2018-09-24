@@ -602,9 +602,7 @@ function amp_get_content_embed_handlers( $post = null ) {
 			'AMP_Gfycat_Embed_Handler'                => array(),
 			'AMP_Hulu_Embed_Handler'                  => array(),
 			'AMP_Imgur_Embed_Handler'                 => array(),
-			'WPCOM_AMP_Polldaddy_Embed'               => array(),
-			'Frankly_AMP_Slideshow_Embed_Handler'     => array(),
-			'Frankly_AMP_Facebook_Embed_Handler'      => array()
+			'WPCOM_AMP_Polldaddy_Embed'               => array()
 		),
 		$post
 	);

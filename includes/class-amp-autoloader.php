@@ -108,6 +108,10 @@ class AMP_Autoloader {
 		'WPCOM_AMP_Polldaddy_Embed'                   => 'wpcom/class-amp-polldaddy-embed',
 		'AMP_Test_Stub_Sanitizer'                     => 'tests/stubs',
 		'AMP_Test_World_Sanitizer'                    => 'tests/stubs',
+
+		// Frankly AMP embeds
+		'Frankly_AMP_Slideshow_Embed_Handler'         => 'includes/embeds/frankly-amp-embeds/class-frankly-amp-slideshow-embed',
+		'Frankly_AMP_Facebook_Embed_Handler'         => 'includes/embeds/frankly-amp-embeds/class-frankly-amp-facebook-embed',
 	);
 
 	/**

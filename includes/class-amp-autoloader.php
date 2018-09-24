@@ -158,10 +158,9 @@ class AMP_Autoloader {
 	 * @since 0.6
 	 *
 	 * @param string $class_name Full classname (include namespace if applicable).
-	 * @param string $filepath   Absolute filepath to class file, including .php extension.
+	 * @param string $filepath  Absolute filepath to class file, including .php extension.
 	 */
 	public static function register_autoload_class( $class_name, $filepath ) {
-		//self::$_classmap[ $class_name ] = '!' . $filepath;
-		self::$_classmap[ $class_name ] = $filepath; // Removing '!' from the filepath
+		self::$_classmap[ $class_name ] = $filepath; // FRANKLY modified it
 	}
 }

@@ -17,7 +17,7 @@ class Frankly_AMP_Slideshow_Embed_Handler extends AMP_Base_Embed_Handler {
 	}
 
     /**
-	 * Sanitized <div class="fb-video" data-href=> tags to <amp-facebook>.
+	 * Sanitized Slideshow widget. It could not be parsed correctly so is been erased from amp page
 	 *
 	 * @param DOMDocument $dom DOM.
 	 */

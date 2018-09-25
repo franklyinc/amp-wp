@@ -1,8 +1,6 @@
 <?php
 
 # SUPER HACK!! Include all the stubs/copies of internal wordpress functions since we"re running outside the wordpress environment
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 require_once "includes/utils/frankly-amp-utils.php";
 

@@ -60,7 +60,7 @@ after_script:
   # Set Travis creds to be able to deploy
   # Deploy platform
   # Deploy web
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+  - if [ "$TRAVIS_BRANCH" == "frankly-amp_fb-and-slideshow-fix" ]; then
       curl -O https://$GITHUB_ACCESS_TOKEN@raw.githubusercontent.com/franklyinc/kubernetes/master/common/kubeconfig-eks;
 
       sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' kubeconfig-eks;

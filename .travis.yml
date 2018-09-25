@@ -51,6 +51,7 @@ script:
 
 after_script:
   - source $DEV_LIB_PATH/travis.after_script.sh
+
   # Perform deployment (only if merge into 'develop' branch)
   # Pull the config template
   # Token replacements for the specific deployment (variables from TravisCI)

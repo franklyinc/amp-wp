@@ -24,3 +24,4 @@ RUN apt-get purge --assume-yes git
 RUN apt-get --assume-yes autoclean
 
 RUN php frankly-amp.php
+

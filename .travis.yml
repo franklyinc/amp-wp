@@ -1,24 +1,33 @@
-# Tell Travis CI we're using PHP
 language: php
-
-# Opt to use Travis container-based environment.
 sudo: false
-
-# Newer versions like trusty don't have PHP 5.2 or 5.3
-# https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
 dist: precise
 
+env:
+  global:
+  - secure: HfFNS89yP+4V+rcdwKcOv2p0xxb8KSIJO2oMO8KWoBO83LONkdlA6M8sLJlUgIqglfB3dMonUcIXmjVVStoAuQH+Z6bQ9pFvLMED8nqcMHvEAUGhygphfZ4YYz0NLbAL4v0BGJZYVmC3+4uj5IHU31DaXt85C+QyTHU1ra9azevbSHe0y0hfWHVEjbp5BVCNVWgiYi6ROZLpBLg/YBFVH0hs05ladz54F5w/UPe//ZobShdReunat2WVMic1LBGBQ2wk733fqApYKFvipgdvgxndEqmmRxgywUNDNODnmYvc4vZ32zWPqPGYfeQT2q7M7loCZN5xIMAJbCLqZ0V1VmAH2FyG4Ep/HzNv7Xm//J5r2GVlzvNkkjqJrqUVPGp496KrNRt/JNQUnq3BxZB2oGhmTAYtQxmLxNi9C5GTyAsVvPAQidYyEOpSAC31+zVjPDe0Qzn0unT4cQeTcMaw3O1fA9oyk3YCjti6gFNVzxFFJKuGO0IdAnLUCieZkrTn+Qv7J7KGvhoUZr6RwB16x16Ls9D/XOGoz0oBpK4YmmC/3C/3g3p7C8nfpXpw13lcTTdVEwRUV1HjUsC8b+eEdEfRssGlEeZMkuo68JQGNwlIFwh65Fq5468uyEWPMK3bzHIh+oe6hqKgf7tsmKl8+e1BZV6Q1zrI9ySieA3zRiQ=
+  - secure: PeThzTkIj3YNVH+X7qun1xtpn8IAlilzYyXCvM20MMnqG9e0PHjea96hQVXRd27tpdZXlET8BPSq1PLFZo6F7GNof4JujmrHwkSLDtIVpD2K31bwEHtr6+8rnG/Hrg+G0NvAmxEAYeNh7cUKfqdy0klecX1gCAfUghQ0cxvm+g23vicXTrNY9h3pyX8GZAS2k5ZC7gGuXSm01UazcB8xcd2gYPiNkSM1BJ4lmmn7BJjKVS+s2ABH9B5a3qJDYgaS+tqMaKvAbjyvQ8nsQA5GC8AK/FNjpWiO7HRoZLV6RWUexUfwPLeUwh1QextfJ4DYWGVJb0T6WjfDz5V2tMkUZoY5FoYIxCC6tEKn/A4J3ar48LvokP5O/+VfTztbEXEPpPadSC7R1rqAeuGX7Z4BJWAgcDq6/OX5X8metFx6C9csa9XoUXOZ8JMIhK/MRDlvdu9ifZbOAB/+62hUZ+gtEf4OPHD/LJCfVS/XimIHKBTi02hqu0ADPHSRmqApZfAcJIlVHvk3ijll79FxLc51VsbSHQj8PI1G3jr73iZ/0jook2B91qQjZ46ZBhZomeVJdmRPK+swYCdfD/vzwY1wXFH7MLWWPdt58ApkevPLfD+7p8WFQbDmSIQk86Qpj4njzWKdnDVbqNOaHqnfhyL2m4sK3dzWuLCsVqa2IDC7DxY=
+  - secure: NYrZLsBmnOcBtAYR1b7XkJunzb5hg5S/781g/HBkg658UCAKY0Jb8tM9YvOfUo26bRcWyaZ+8H8iWtWeLV7lKRQmSYPYoV7r/wvJ1aTjUeuUrOyZn3+dA3KjnWlGPSjmStxRwKZihg7MlX5RoHK3YM2YrEBl/jxAJZHxTljeP/tjvjyFcbQHlVDmjIqUYE0yow9uiyaaqx+G0O27uW7Oar7SyqmRhKW0jlNPwYyoz+AEMh093kLGU8I2sieqZLbM4ccUp1Ads0sjbin1rcRmAYLrA0a8xwyPYj18WribuwFi1USvUZt7DWvLIErye8ZGPDSXCiuh0o+nJUebM6GwJ88zfN/Kd6f/893DeH3mNVz3224Kd7w4Tnm8GRJbo6Yy2G06ukrgCDbbWXgZniQpyudCmfRUmTmg8gMq+rVRwMOusxb94Z4/lWZFJ6MyKwzmiNSmI9Qe+fmzMobstEz+Dl3oGThtPrlENBEyuLou3KoF6ie8ct1dttUOQGP4AjlJmYfW0gzm5BonjQiaV+d0QLTh1MC7zmfTy5ALYxg6pG8OU0PGtyfV8lVuA0KoJgJG6K98aG17qnXHtLF5ASXLctpRTQxY9TScIR9xWej5lzT251wz8+r0hQh+8nhccXZNwoe67YB0X/MsvPdOtcMOWgsuD+oufwtn0+shRb6zUQk=
+  - secure: QmruKds9TAmFzsWpNgYyj6nUoP/Fk/0UHtfuvXt3uaDmqWFY4yymz6NILzAOCWSvdvLl14hekaTTlK99tZol+qSPRxRYezCAPfjuh5+ti38cWUmrOr9cHgEUpdMUQ+c4W+AmolRCbXHHSln241hVpZbmzx2NFuWNGWESrQJ2OLs2Kkv7JwDDsovgphlCfl/oc0GrdcaO4Y8mxu79+igvBByd26FpkZNn4lYmWQImjrE+Ie5yj64ett0RrtLg74ztDpcZq525MQURrdSETdhWgAaQDHk8Cz/Ps8wUDYtnKN21QprsV4RIlqHSi0X+DI0KSbbLaTpiMcbKinWQITMpSIgToqvyd5Mt2DgG5t+QX7tknYJHHo1BUn8V3TubudI0ZDnqHHxdbjaxM8IVBvRRRUK37rKxNTET0Ggznnmjf562yyHfHakJsgwGDGdBnliEOUlc8uPNW2B6MPXkioN/nfvNp8s+7B1ZiGiJOmbdMtj4Y4/sxfNyEwi+4KmrOTy8U+QOwP6LoJWY3CD7PQf44Dj9j8j7k/B0uQhLHkbuIY94WKqhES5cQY9WKHtPnjqMbfyNeqsI1PsNXXjvrFHXsmK/uBwHm+SQ0kldS6+zoYCwokP5UXmEhjwPNb2mYV6FvbLHaKqgy2nmMHzqn1n604hvklPwF+1uP/JsN065USw=
+  - secure: m2W1M2hsqe9wR0WvVCz7ICjQOM4unQ9kIhSsntI3frlyVWWurIc7yjcRC7ceeY0gUznTwdJehMshz14KQ6xs7Hi8cMws5nz6XkHkGUxA0uga3o6HWP3ABpbppkdv4hBrkJ4xqqwfZdWMVkMsDY7qlgQ7c2Pr1M+ZgcbWw7MbYIWH5QiONiz7BVk8anwh6P3uWylTHK792w5G75fOxseFNyQtd1KKbc34II7UaDfkAMVf89oCsiCi5FPPFo8VP2VwTCn17W9halIY9L6Ub7FcJyM2Lrm+oMPJiTBDDYFf6sGOOCJBFYA9KEtxSFe/q8oeJQwQsSjxKvRffgb++Ug6p93Wgi2i4KX1T//6aDr3rCjVW6OqvCa68D+VGZo14dvz8H3vSWp9/FTLg4RtLDAenkIRRVcmDjVb91PyP1DrZqTAps2qKLpgrSr2wFkVZwysvykYmaUIN2A/PN4iXwp3PJ+5EqS3NkLKIAifP1nvWoePr41/Y0f616SY33N9kSFPCI75Itv0+qmdCajqs2fOrt11YmF3gpyglwXq/dec5mQCNHZo6zI4XI9hNg90TeVQ2Q7VQlRiMlHgMBiFq53nMYLh5cSTt3QA01et+8ylLShqcqggMjvDFFTEAmNUsSkuIgYNmTbLdXh4zRY/Kbf5/cl59h5gpzPxCo30OcNtsD8=
+  - COMMIT=${TRAVIS_COMMIT::7}
+  - REPO=amp-converter
+
 notifications:
-  email:
-    on_success: never
-    on_failure: change
+  slack: franklychat:zzmJpxdwNxhkyTaKEiRdHZ0h
+
+services:
+  - docker
 
 cache:
   directories:
-    - node_modules
-    - vendor
-    - $HOME/phpunit-bin
-    - $HOME/deployment-targets
+  - node_modules
+  - vendor
+  - "$HOME/phpunit-bin"
+  - "$HOME/deployment-targets"
+
+before_install:
+  - docker pull node:latest 2>&1 > /dev/null &
+  - cp .netrc ~
 
 install:
   - if [[ $DEV_LIB_SKIP =~ composer ]]; then composer install --no-dev; fi
@@ -26,45 +35,46 @@ install:
   - export DEV_LIB_PATH=dev-lib
   - source $DEV_LIB_PATH/travis.install.sh
 
+before_script:
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;fi`
+
 script:
   - source $DEV_LIB_PATH/travis.script.sh
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker build -f Dockerfile -t franklyops/$REPO:$COMMIT .
+  - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:$TAG
+  - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:travis-$TRAVIS_BUILD_NUMBER
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+      docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:dev-latest;
+    fi
+  - docker push franklyops/$REPO
 
 after_script:
   - source $DEV_LIB_PATH/travis.after_script.sh
+  # Perform deployment (only if merge into 'develop' branch)
+  # Pull the config template
+  # Token replacements for the specific deployment (variables from TravisCI)
+  # Pull kubectl
+  # Pull aws-iam-authenticator
+  # Set Travis creds to be able to deploy
+  # Deploy platform
+  # Deploy web
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+      curl -O https://$GITHUB_ACCESS_TOKEN@raw.githubusercontent.com/franklyinc/kubernetes/master/common/kubeconfig-eks;
 
-jobs:
-  include:
-    - stage: test
-      php: "7.2"
-      env: WP_VERSION=trunk
-    - php: "5.3"
-      env: WP_VERSION=latest DEV_LIB_SKIP=composer,phpcs
-    - php: "5.4"
-      env: WP_VERSION=4.7    DEV_LIB_SKIP=composer,phpcs
-    - php: "5.5"
-      env: WP_VERSION=latest DEV_LIB_SKIP=phpcs
-    - php: "5.6"
-      env: WP_VERSION=4.8    DEV_LIB_SKIP=phpcs
-    - php: "5.6"
-      env: WP_VERSION=latest DEV_LIB_SKIP=phpcs
-    - php: "7.0"
-      env: WP_VERSION=latest DEV_LIB_SKIP=phpcs
-    - php: "7.1"
-      env: WP_VERSION=latest DEV_LIB_SKIP=phpcs
-    - stage: deploy
-      if: type = push AND fork = false AND ( branch =~ ^[a-z][a-z0-9-]{0,10}$ OR branch =~ ^[0-9]+\.[0-9]+$ ) AND NOT branch IN ( live, test, dev, settings, team, support, debug, multidev, files, tags, billing )
-      php: "7.1"
-      env: WP_VERSION=latest DEV_LIB_ONLY=composer,grunt
-      script:
-        - |
-          eval "$(ssh-agent -s)"
-          pantheon_branch=$( echo $TRAVIS_BRANCH | sed 's/^\([0-9]\)/v\1/' | sed 's/[^a-z0-9-]/-/' )
-          echo "Initializing deployment to Pantheon branch: $pantheon_branch"
-          openssl aes-256-cbc -K $encrypted_7eb11f40d4e9_key -iv $encrypted_7eb11f40d4e9_iv -in bin/keys/id_rsa_ampconfdemo.enc -out bin/keys/id_rsa_ampconfdemo -d
-          chmod 600 bin/keys/id_rsa_ampconfdemo
-          ./bin/deploy-travis-pantheon.sh \
-            ampconfdemo \
-            db7f3307-9808-4753-aaa4-acb387c94472 \
-            $(pwd)/bin/keys/id_rsa_ampconfdemo \
-            $pantheon_branch
-      after_script: skip
+      sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' kubeconfig-eks;
+      sed -i -e 's|KUBE_ENDPOINT|'"${KUBE_ENDPOINT}"'|g' kubeconfig-eks;
+
+      curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-06-05/bin/linux/amd64/kubectl;
+      chmod +x ./kubectl;
+      sudo mv ./kubectl /usr/local/bin/kubectl;
+
+      curl -O https://$GITHUB_ACCESS_TOKEN@raw.githubusercontent.com/franklyinc/kubernetes/master/eks/aws-iam-authenticator;
+      chmod +x ./aws-iam-authenticator;
+      sudo mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator;
+
+      export AWS_ACCESS_KEY_ID=${TRAVIS_AWS_KEY};
+      export AWS_SECRET_ACCESS_KEY=${TRAVIS_AWS_SECRET};
+
+      kubectl --kubeconfig kubeconfig-eks set image deployment/amp-converter-deployment amp-converter-deployment=${DOCKER_USERNAME}/$REPO:travis-$TRAVIS_BUILD_NUMBER;
+    fi

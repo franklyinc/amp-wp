@@ -36,7 +36,7 @@ class Frankly_AMP_Facebook_Embed_Handler extends AMP_Base_Embed_Handler
     }
 
     /**
-     * Sanitized facebook tags created in Legacy and NextGen Story editor to <amp-facebook>.
+     * Sanitized facebook tags created in Classic and NextGen Story editor to <amp-facebook>.
      *
      * @param DOMDocument $dom DOM.
      */

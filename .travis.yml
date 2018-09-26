@@ -1,6 +1,6 @@
 language: php
-sudo: false
-dist: precise
+#sudo: required
+dist: trusty
 
 env:
   global:
@@ -26,21 +26,20 @@ cache:
   - "$HOME/deployment-targets"
 
 before_install:
-  - docker pull node:latest 2>&1 > /dev/null &
   - cp .netrc ~
 
 install:
   - if [[ $DEV_LIB_SKIP =~ composer ]]; then composer install --no-dev; fi
   - nvm install 6 && nvm use 6
-  - export DEV_LIB_PATH=dev-lib
-  - source $DEV_LIB_PATH/travis.install.sh
+#  - export DEV_LIB_PATH=dev-lib
+#  - source $DEV_LIB_PATH/travis.install.sh
 
 before_script:
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;fi`
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 script:
-  - source $DEV_LIB_PATH/travis.script.sh
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+#  - source $DEV_LIB_PATH/travis.script.sh
   - docker build -f Dockerfile -t franklyops/$REPO:$COMMIT .
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:$TAG
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:travis-$TRAVIS_BUILD_NUMBER
@@ -50,7 +49,7 @@ script:
   - docker push franklyops/$REPO
 
 after_script:
-  - source $DEV_LIB_PATH/travis.after_script.sh
+#  - source $DEV_LIB_PATH/travis.after_script.sh
 
   # Perform deployment (only if merge into 'develop' branch)
   # Pull the config template

@@ -10,6 +10,8 @@ env:
   - secure: m2W1M2hsqe9wR0WvVCz7ICjQOM4unQ9kIhSsntI3frlyVWWurIc7yjcRC7ceeY0gUznTwdJehMshz14KQ6xs7Hi8cMws5nz6XkHkGUxA0uga3o6HWP3ABpbppkdv4hBrkJ4xqqwfZdWMVkMsDY7qlgQ7c2Pr1M+ZgcbWw7MbYIWH5QiONiz7BVk8anwh6P3uWylTHK792w5G75fOxseFNyQtd1KKbc34II7UaDfkAMVf89oCsiCi5FPPFo8VP2VwTCn17W9halIY9L6Ub7FcJyM2Lrm+oMPJiTBDDYFf6sGOOCJBFYA9KEtxSFe/q8oeJQwQsSjxKvRffgb++Ug6p93Wgi2i4KX1T//6aDr3rCjVW6OqvCa68D+VGZo14dvz8H3vSWp9/FTLg4RtLDAenkIRRVcmDjVb91PyP1DrZqTAps2qKLpgrSr2wFkVZwysvykYmaUIN2A/PN4iXwp3PJ+5EqS3NkLKIAifP1nvWoePr41/Y0f616SY33N9kSFPCI75Itv0+qmdCajqs2fOrt11YmF3gpyglwXq/dec5mQCNHZo6zI4XI9hNg90TeVQ2Q7VQlRiMlHgMBiFq53nMYLh5cSTt3QA01et+8ylLShqcqggMjvDFFTEAmNUsSkuIgYNmTbLdXh4zRY/Kbf5/cl59h5gpzPxCo30OcNtsD8=
   - COMMIT=${TRAVIS_COMMIT::7}
   - REPO=amp-converter
+  - AWS_REGION=us-east-1
+
 
 notifications:
   slack: franklychat:zzmJpxdwNxhkyTaKEiRdHZ0h
@@ -70,5 +72,5 @@ after_script:
       export AWS_ACCESS_KEY_ID=${TRAVIS_AWS_KEY};
       export AWS_SECRET_ACCESS_KEY=${TRAVIS_AWS_SECRET};
 
-      kubectl --kubeconfig kubeconfig-eks set image deployment/amp-converter-deployment amp-converter-deployment=${DOCKER_USERNAME}/$REPO:travis-$TRAVIS_BUILD_NUMBER;
+      kubectl --kubeconfig kubeconfig-eks set image deployment/$REPO-deployment $REPO=${DOCKER_USERNAME}/$REPO:travis-$TRAVIS_BUILD_NUMBER;
     fi

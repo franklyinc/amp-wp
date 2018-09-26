@@ -84,7 +84,7 @@ class Frankly_AMP_Facebook_Embed_Handler extends AMP_Base_Embed_Handler
         ));
 
         $wrapper_node = AMP_DOM_Utils::create_node($dom, "div", array(
-            'class' => "frn-ampbody__ebmbed frn-ampbody__facebook",
+            'class' => "frn-ampbody__embed frn-ampbody__facebook",
         ));
 
         $wrapper_node->appendChild($amp_facebook_node);

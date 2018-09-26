@@ -68,7 +68,7 @@ class Frankly_AMP_Instagram_Embed_Handler extends AMP_Base_Embed_Handler
         ) );
         
         $wrapper_node = AMP_DOM_Utils::create_node($dom, "div", array(
-            'class' => "frn-ampbody__ebmbed frn-ampbody__instagram"
+            'class' => "frn-ampbody__embed frn-ampbody__instagram"
         ));
 
         $wrapper_node->appendChild($new_node);

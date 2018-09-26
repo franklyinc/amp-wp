@@ -1,5 +1,5 @@
 language: php
-sudo: false
+#sudo: false
 dist: precise
 
 env:
@@ -37,10 +37,10 @@ install:
 
 before_script:
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;fi`
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 script:
 #  - source $DEV_LIB_PATH/travis.script.sh
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -f Dockerfile -t franklyops/$REPO:$COMMIT .
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:$TAG
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:travis-$TRAVIS_BUILD_NUMBER

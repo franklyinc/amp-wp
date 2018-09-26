@@ -1,6 +1,5 @@
 language: php
-sudo: false
-dist: precise
+dist: trusty
 
 env:
   global:
@@ -26,21 +25,17 @@ cache:
   - "$HOME/deployment-targets"
 
 before_install:
-  - docker pull node:latest 2>&1 > /dev/null &
   - cp .netrc ~
 
 install:
   - if [[ $DEV_LIB_SKIP =~ composer ]]; then composer install --no-dev; fi
   - nvm install 6 && nvm use 6
-  - export DEV_LIB_PATH=dev-lib
-  - source $DEV_LIB_PATH/travis.install.sh
 
 before_script:
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;fi`
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 script:
-  - source $DEV_LIB_PATH/travis.script.sh
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -f Dockerfile -t franklyops/$REPO:$COMMIT .
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:$TAG
   - docker tag franklyops/$REPO:$COMMIT franklyops/$REPO:travis-$TRAVIS_BUILD_NUMBER
@@ -50,8 +45,6 @@ script:
   - docker push franklyops/$REPO
 
 after_script:
-  - source $DEV_LIB_PATH/travis.after_script.sh
-
   # Perform deployment (only if merge into 'develop' branch)
   # Pull the config template
   # Token replacements for the specific deployment (variables from TravisCI)
@@ -60,7 +53,7 @@ after_script:
   # Set Travis creds to be able to deploy
   # Deploy platform
   # Deploy web
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+  - if [ "$TRAVIS_BRANCH" == "frankly-amp_fb-and-slideshow-fix" ]; then
       curl -O https://$GITHUB_ACCESS_TOKEN@raw.githubusercontent.com/franklyinc/kubernetes/master/common/kubeconfig-eks;
 
       sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' kubeconfig-eks;

@@ -108,7 +108,7 @@ class AMP_Autoloader {
 		'WPCOM_AMP_Polldaddy_Embed'                   => 'wpcom/class-amp-polldaddy-embed',
 		'AMP_Test_Stub_Sanitizer'                     => 'tests/stubs',
 		'AMP_Test_World_Sanitizer'                    => 'tests/stubs',
-	);
+		);
 
 	/**
 	 * Is registered.
@@ -158,9 +158,9 @@ class AMP_Autoloader {
 	 * @since 0.6
 	 *
 	 * @param string $class_name Full classname (include namespace if applicable).
-	 * @param string $filepath   Absolute filepath to class file, including .php extension.
+	 * @param string $filepath  Absolute filepath to class file, including .php extension.
 	 */
 	public static function register_autoload_class( $class_name, $filepath ) {
-		self::$_classmap[ $class_name ] = '!' . $filepath;
+		self::$_classmap[ $class_name ] = $filepath; // FRANKLY modified it
 	}
 }

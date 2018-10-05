@@ -17,6 +17,8 @@ require_once 'amp.php';
 AMP_Autoloader::register_autoload_class( 'Frankly_AMP_Slideshow_Embed_Handler', 'includes/embeds/frankly-amp-embeds/class-frankly-amp-slideshow-embed' );
 AMP_Autoloader::register_autoload_class( 'Frankly_AMP_Facebook_Embed_Handler', 'includes/embeds/frankly-amp-embeds/class-frankly-amp-facebook-embed' );
 AMP_Autoloader::register_autoload_class( 'Frankly_AMP_Instagram_Embed_Handler', 'includes/embeds/frankly-amp-embeds/class-frankly-amp-instagram-embed' );
+AMP_Autoloader::register_autoload_class( 'Frankly_AMP_Video_Embed_Handler', 'includes/embeds/frankly-amp-embeds/class-frankly-amp-video-embed' );
+AMP_Autoloader::register_autoload_class( 'Frankly_AMP_UB_Embed_Handler', 'includes/embeds/frankly-amp-embeds/class-frankly-amp-ub-embed' );
 
 $html = file_get_contents( 'php://input' );
 
@@ -27,6 +29,8 @@ $embed_handlers = amp_get_content_embed_handlers( $html );
 $embed_handlers['Frankly_AMP_Slideshow_Embed_Handler'] = array();
 $embed_handlers['Frankly_AMP_Facebook_Embed_Handler']  = array();
 $embed_handlers['Frankly_AMP_Instagram_Embed_Handler'] = array();
+$embed_handlers['Frankly_AMP_Video_Embed_Handler'] = array();
+$embed_handlers['Frankly_AMP_UB_Embed_Handler'] = array();
 
 $amp_content = new AMP_Content(
 	$html,

@@ -1185,6 +1185,7 @@ class Frankly_AMP_Tag_And_Attribute_Sanitizer extends AMP_Base_Sanitizer {
 			if ( $node->hasAttribute( $attr_name ) ) {
 				$urls_to_test = preg_split( '/\s*,\s*/', $node->getAttribute( $attr_name ) );
 
+				// changes related to WEB-5235 issue
 				$parent_node = $node->parentNode;
 				if($parent_node != null){
 					$mml_attr = $parent_node->getAttribute("data-mml-type");
@@ -1229,6 +1230,7 @@ class Frankly_AMP_Tag_And_Attribute_Sanitizer extends AMP_Base_Sanitizer {
 	 *                                        is no rule for this attribute.
 	 */
 	private function check_attr_spec_rule_allowed_protocol( $node, $attr_name, $attr_spec_rule ) {
+		var_dump($attr_name);
 		if ( isset( $attr_spec_rule[ AMP_Rule_Spec::VALUE_URL ][ AMP_Rule_Spec::ALLOWED_PROTOCOL ] ) ) {
 			if ( $node->hasAttribute( $attr_name ) ) {
 				$urls_to_test = preg_split( '/\s*,\s*/', $node->getAttribute( $attr_name ) );

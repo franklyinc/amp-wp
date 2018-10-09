@@ -44,14 +44,17 @@ class Frankly_AMP_Video_Embed_Handler extends AMP_Base_Embed_Handler
 			$data_mml_type = $node->getAttribute("data-mml-type");
 			$data_oembed_url = $node->getAttribute("data-oembed-url");
 
-            if ($data_mml_type !== null && $data_mml_type == "clip") {
+			if ($data_mml_type !== null && $data_mml_type == "clip") {
 				$iframe = $node->getElementsByTagName("iframe")->item(0);
 				if($iframe == null) return;
 				
 				$src = $iframe->getAttribute("src");
 
                 if ($src !== null) {
-                    $this->create_amp_video_and_replace_node($dom, $node, $src);
+					if(substr( $src, 0, 2 ) === "//"){
+						$src = substr_replace($src,"https://", 0, 2);
+					};
+                    $this->create_amp_video_iframe_and_replace_node($dom, $node, $src);
                 }
 			};
 			
@@ -74,6 +77,27 @@ class Frankly_AMP_Video_Embed_Handler extends AMP_Base_Embed_Handler
 
         $wrapper_node = AMP_DOM_Utils::create_node($dom, "div", array(
             'class' => "frn-ampbody__embed frn-ampbody__video",
+        ));
+
+        $wrapper_node->appendChild($amp_video_node);
+
+        $node->parentNode->replaceChild($wrapper_node, $node);
+
+        $this->did_convert_elements = true;
+	}
+	
+	private function create_amp_video_iframe_and_replace_node($dom, $node, $src)
+    {
+        $amp_video_node = AMP_DOM_Utils::create_node($dom, "amp-iframe", array(
+			'src' => $src,
+			'layout' => 'responsive',
+			'sandbox' => 'allow-scripts allow-same-origin',
+            'width' => $this->DEFAULT_WIDTH,
+			'height' => $this->DEFAULT_HEIGHT
+        ));
+
+        $wrapper_node = AMP_DOM_Utils::create_node($dom, "div", array(
+            'class' => "frn-ampbody__embed frn-ampbody__video-iframe",
         ));
 
         $wrapper_node->appendChild($amp_video_node);

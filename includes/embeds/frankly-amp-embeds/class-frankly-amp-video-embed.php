@@ -55,7 +55,7 @@ class Frankly_AMP_Video_Embed_Handler extends AMP_Base_Embed_Handler
 						$src = substr_replace($src,"https://", 0, 2);
 					};
 					$src_parts = parse_url($src);
-					$new_src = "[CONTENT_DOMAIN]".$src_parts["path"]."/".$src_parts["query"];
+					$new_src = "[CONTENT_DOMAIN]".$src_parts["path"]."?".$src_parts["query"];
 
                     $this->create_amp_video_iframe_and_replace_node($dom, $node, $new_src);
                 }

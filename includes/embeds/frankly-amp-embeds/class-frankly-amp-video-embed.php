@@ -93,6 +93,7 @@ class Frankly_AMP_Video_Embed_Handler extends AMP_Base_Embed_Handler
     {
         $amp_video_node = AMP_DOM_Utils::create_node($dom, "amp-iframe", array(
 			'src' => $src,
+			'allow' =>'fullscreen',
 			'layout' => 'responsive',
 			'sandbox' => 'allow-same-origin allow-scripts',
             'width' => $this->DEFAULT_WIDTH,

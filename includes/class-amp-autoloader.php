@@ -163,4 +163,15 @@ class AMP_Autoloader {
 	public static function register_autoload_class( $class_name, $filepath ) {
 		self::$_classmap[ $class_name ] = $filepath; // FRANKLY modified it
 	}
+
+	/**
+	 * Allows to remove core class. Added by Frankly and related to WEB-5235 issue 
+	 *
+	 * @param string $class_name Full classname (include namespace if applicable).
+	 */
+	public static function remove_autoload_class( $class_name ){
+		unset(self::$_classmap[ $class_name]);
+	} 
+
+
 }

@@ -1,11 +1,6 @@
 <?php
 /**
  * Class Frankly_AMP_Slideshow_Embed_Handler
- *
- */
-
-/**
- * Class Frankly_AMP_Slideshow_Embed_Handler
 **/
 class Frankly_AMP_Slideshow_Embed_Handler extends AMP_Base_Embed_Handler {
 	public function register_embed() {
